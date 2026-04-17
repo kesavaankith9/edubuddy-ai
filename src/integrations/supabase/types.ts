@@ -14,7 +14,186 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      chat_messages: {
+        Row: {
+          content: string
+          created_at: string
+          id: string
+          role: string
+          student_id: string
+        }
+        Insert: {
+          content: string
+          created_at?: string
+          id?: string
+          role: string
+          student_id: string
+        }
+        Update: {
+          content?: string
+          created_at?: string
+          id?: string
+          role?: string
+          student_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "chat_messages_student_id_fkey"
+            columns: ["student_id"]
+            isOneToOne: false
+            referencedRelation: "students"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      marks: {
+        Row: {
+          created_at: string
+          exam_type: string
+          id: string
+          marks_obtained: number
+          max_marks: number
+          student_id: string
+          subject_id: string
+        }
+        Insert: {
+          created_at?: string
+          exam_type: string
+          id?: string
+          marks_obtained: number
+          max_marks?: number
+          student_id: string
+          subject_id: string
+        }
+        Update: {
+          created_at?: string
+          exam_type?: string
+          id?: string
+          marks_obtained?: number
+          max_marks?: number
+          student_id?: string
+          subject_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "marks_student_id_fkey"
+            columns: ["student_id"]
+            isOneToOne: false
+            referencedRelation: "students"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "marks_subject_id_fkey"
+            columns: ["subject_id"]
+            isOneToOne: false
+            referencedRelation: "subjects"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      student_sessions: {
+        Row: {
+          created_at: string
+          expires_at: string
+          student_id: string
+          token: string
+        }
+        Insert: {
+          created_at?: string
+          expires_at: string
+          student_id: string
+          token: string
+        }
+        Update: {
+          created_at?: string
+          expires_at?: string
+          student_id?: string
+          token?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "student_sessions_student_id_fkey"
+            columns: ["student_id"]
+            isOneToOne: false
+            referencedRelation: "students"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      students: {
+        Row: {
+          branch: string
+          created_at: string
+          email: string | null
+          enrollment_no: string
+          id: string
+          name: string
+          password_hash: string
+          semester: number
+        }
+        Insert: {
+          branch?: string
+          created_at?: string
+          email?: string | null
+          enrollment_no: string
+          id?: string
+          name: string
+          password_hash: string
+          semester?: number
+        }
+        Update: {
+          branch?: string
+          created_at?: string
+          email?: string | null
+          enrollment_no?: string
+          id?: string
+          name?: string
+          password_hash?: string
+          semester?: number
+        }
+        Relationships: []
+      }
+      subjects: {
+        Row: {
+          attended_sessions: number
+          code: string
+          created_at: string
+          id: string
+          name: string
+          semester: number
+          student_id: string
+          total_sessions: number
+        }
+        Insert: {
+          attended_sessions?: number
+          code: string
+          created_at?: string
+          id?: string
+          name: string
+          semester: number
+          student_id: string
+          total_sessions?: number
+        }
+        Update: {
+          attended_sessions?: number
+          code?: string
+          created_at?: string
+          id?: string
+          name?: string
+          semester?: number
+          student_id?: string
+          total_sessions?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "subjects_student_id_fkey"
+            columns: ["student_id"]
+            isOneToOne: false
+            referencedRelation: "students"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
