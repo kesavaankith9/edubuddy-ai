@@ -1,0 +1,10 @@
+project_id = "sieeujpymcrcqeucmlwu"
+
+[functions.auth-login]
+verify_jwt = false
+
+[functions.student-data]
+verify_jwt = false
+
+[functions.chat]
+verify_jwt = false
