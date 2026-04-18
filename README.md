@@ -422,7 +422,3 @@ MIT License - see [LICENSE](./LICENSE) for details.
 5. Open a Pull Request
 
 ---
-
-<p align="center">
-  Built with ❤️ using <a href="https://lovable.dev">Lovable</a> + <a href="https://tanstack.com">TanStack</a> + <a href="https://supabase.com">Supabase</a>
-</p>
