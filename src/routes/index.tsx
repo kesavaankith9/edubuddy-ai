@@ -22,6 +22,8 @@ function LoginPage() {
 
   useEffect(() => {
     if (session.token && session.student) navigate({ to: "/chat" });
+    // Reset scroll position to top on mount
+    window.scrollTo(0, 0);
   }, [navigate]);
 
   async function onSubmit(e: FormEvent) {
@@ -69,7 +71,7 @@ function LoginPage() {
             ))}
           </div>
         </div>
-        <div className="relative text-sm opacity-70">© {new Date().getFullYear()} EduMate · MVP demo</div>
+        <div className="relative text-sm opacity-70">© {new Date().getFullYear()} EduMate </div>
       </aside>
 
       {/* Right: form */}
